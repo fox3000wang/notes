@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        (() => {
+            var a = {
+                n: 1
+            };
+            var b = a;
+            a.x = a = {
+                n: 2
+            };
+            console.log(a.x);
+            console.log(b);
+        })()
+
+        /*
+         * a.x = a = { n: 2 };
+         * 
+         * 先创建一块堆内存{ n: 2 } 地址 x000001
+         * 为 a 添加成员 x
+         * 让 a.x = x000001
+         * 然后再让 a 等于 x000001
+         */
+    </script>
+
+    <script>
+        (() => {
+
+            var x = [12, 23]; // 1
+
+            function fn(y) { // 2  x = [12, 23],y = [12, 23]
+                y[0] = 100; // 3   x = [100, 23],y = [100, 23]
+                y = [100]; // 4    x = [100, 23],y = [100]
+                y[1] = 200; //5    x = [100, 23],y = [100, 200]
+                console.log(y); // [100, 200]
+            }
+            fn(x);
+            console.log(x); // [100, 23]
+        })()
+
+        /*
+         * 1. 创建 x 指向堆 [12, 23] 
+         * 2. 创建 fn 指向一个函数，x实参传入函数，x 和 y 同时指向 [12, 23] 
+         * 3. y把 [12, 23] 改成了 [100, 23]
+         * 4. 创建[100] y指向[100], x指向[100, 23]
+         * 5. 为y添加1个200元素
+         */
+    </script>
+
+    <script>
+        (() => {
+            let x = 5;
+
+            function fn(x) {
+                return function (y) {
+                    console.log(y + (++x));
+                }
+            }
+            let f = fn(6); // 1
+            f(7); // 2
+            fn(8)(9); // 3
+            f(10); // 4
+            console.log(x); // 5
+        })()
+
+        /*
+         * 1. x = 6, f = function (y) { console.log(y + (++x)); }
+         *
+         * 2. function (y) {            // y = 7 x = (6+1) = 7
+         *      console.log(y + (++x)); // 14
+         *    }
+         *
+         * 3.1 fn(8)(9) // x = 8 
+         * 3.2 function (y) {            // y = 9 x = (8+1) = 9
+         *      console.log(y + (++x)); // 18
+         *    }
+         * 
+         * 4. function (y) {            // y = 10 x = (7+1) = 8
+         *      console.log(y + (++x)); // 18
+         *    }
+         * 
+         * 5. 所有修改的x都是闭包里面的x, 全局的x并没有改变
+         */
+    </script>
+
+    <script>
+        (() => {
+            let a = 0,
+                b = 0;
+
+            function A(a) {
+                A = function (b) {
+                    alert(a + b++);
+                };
+                alert(a++);
+            }
+
+            A(1); // 1
+            A(2); // 4
+        })()
+
+        /**
+         * A(1) alert的是传入的a=1, 执行结束以后a=2
+         * 
+         * 这个时候A被指向到了一个另外的函数, 同时外层的A没有被释放, a的值被保留成为2
+         * 
+         * A(2)阶段  alert(a + b++);  // a = 2  b = 2 输出4
+         */
+    </script>
+</body>
+
+</html>
