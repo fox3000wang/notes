@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位同时设置方位情况</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        span {
+            /* 全屏布局 - 京东+小米-移动分类页 200px - 子适应 */
+            /* width:200px;  100% - 20px  calc() */
+            border: 1px solid red;
+            /* 100% - 200 -200 */
+            position: absolute;
+            left: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 绝对定位和固定定位时，同时设置 left 和 right 等同于隐式地设置宽度  -->
+    <span>1</span>
+</body>
+
+</html>

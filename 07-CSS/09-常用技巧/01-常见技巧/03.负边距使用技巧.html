@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>负边距使用技巧</title>
+    <style>
+        .wrap {
+            width: 230px;
+            margin: auto;
+            padding: 30px;
+            border: 1px dashed red;
+        }
+
+        .wrap>div {
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin: 1px;
+            /* background-color: red; */
+
+            /* 效果: 左为负时，是左移，右为负时，是左拉。上下与左右类似 */
+            margin-left: -50px;
+            /* margin-right: -50px; */
+            /* margin-top: -50px; */
+            /* margin-bottom: -50px; */
+        }
+        /* pc     4等分  中间间距 margin-left  */
+        /* 移动端  2等分  50% + 间距  两边没有间距 */ 
+        *{margin:0;padding:0;}
+        .item{margin-left:-3px;}
+        .inner{
+            /* box-sizing:border-box => padding + border*/
+            float: left;
+            width: 25%;
+            height:100px;
+            box-sizing:border-box;
+            border-left:3px solid #fff;
+        }
+
+        .inner:nth-child(2n+1){background-color: rebeccapurple;}
+        .inner:nth-child(2n){background-color: green;}
+
+    </style>
+</head>
+
+<body>
+    <!-- <div class="wrap">
+        <div></div>
+        <div style="background-color: green;"></div>
+    </div> -->
+
+    <div class="item">
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+        <div class="inner"></div>
+    </div>   
+</body>
+
+</html>
