@@ -1,0 +1,60 @@
+//  percentage 函数将 0.5 转换为 50%，将颜色饱和度增加 5%，以及颜色亮度降低 25% 并且色相值增加 8 
+
+/* @base: #f04615;
+@width: 0.5;
+
+.class {
+    width: percentage(@width); // returns `50%`
+    color: saturate(@base, 5%);
+    background-color: spin(lighten(@base, 25%), 8);
+} */
+
+// value:key  each(@set,rule)
+/* @set: {
+    one: blue;
+    two: green;
+    three: red;
+}
+
+.set {
+    each(@set, {
+            @{key}-@{index}: @value;
+        }
+
+    );
+}
+ */
+
+ // @v = @value @k = key @i= index   mixin   
+ // each(@list,rule)  @list  => @list:{key：value}    .list(){key:value}
+/* .set-2() {
+    one: blue;
+    two: green;
+    three: red;
+}
+
+.set-2 {
+    each(.set-2(), .(@v, @k, @i) {
+            @{k}-@{i}: @v;
+        }
+
+    );
+} */
+
+
+each(range(4), {
+    .col-@{value} {
+        height: (@value * 50px);
+    }
+}
+
+);
+
+
+
+
+
+
+
+
+

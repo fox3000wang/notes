@@ -1,0 +1,17 @@
+@w: 200px;
+@h: 200px;
+
+.block {
+    width: @w;
+    height: @h;
+    border: 10px solid #ccc;
+}
+.box1{
+    &:extend(.block);
+    background: red;
+}
+
+.box2:extend(.block) {
+    background: green;
+}
+

@@ -1,0 +1,63 @@
+// length长度
+/* @list: "banana", "tomato", "potato", "peach";
+n: length(@list); // 4 */
+
+// extract(list,index)
+/* @list: apple, pear, coconut, orange;
+value: extract(@list, 3); */
+
+/* // range(start,end,step)
+value: range(10px, 30px, 10);  // 10 20  30 */
+
+// each(list,rule)
+/* @selectors: blue, green, red;
+
+each(@selectors, {
+        .sel-@{value} {
+            a: b;
+        }
+    }
+
+); */
+
+
+
+// @value, @key, and @index
+
+/* @set: {
+    one: blue;
+    two: green;
+    three: red;
+}
+
+.set {
+    each(@set, {
+            @{key}-@{index}: @value;
+        }
+
+    );
+} */
+
+// Setting variable names in each()
+/* .set-2() {
+    one: blue;
+    two: green;
+    three: red;
+}
+
+.set-2 {
+    each(.set-2(), .(@v, @k, @i) {
+            @{k}-@{i}: @v;
+        }
+
+    );
+} */
+
+//  for loop using range and each   1,2,3,4
+each(range(4), {
+        .col-@{value} {
+            height: (@value * 50px);
+        }
+    }
+
+);

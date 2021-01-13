@@ -1,0 +1,21 @@
+// 转义
+@min768: ~"(min-width: 768px)";
+
+.element {
+    @media @min768 {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* 
+// 从 Less 3.5 开始，可以简写
+
+@min768: (min-width: 768px);
+
+.element {
+    @media @min768 {
+        font-size: 1.2rem;
+    }
+}
+*/

@@ -1,0 +1,48 @@
+// 选择器调用
+@my-selector: banner;
+
+.@{my-selector} {
+    font-weight: bold;
+    line-height: 40px;
+    margin: 0 auto;
+}
+
+// 路径调用
+@images: "../img";
+
+body {
+    color: red;
+    background: url("@{images}/five.jpg");
+}
+
+
+// 属性调用
+@property: color;
+
+.widget {
+    @{property}: #0ee;
+    background-@{property}: #999;
+}
+
+// 变量调用变量
+@primary: green;
+@secondary: blue;
+
+.section {
+    @color: primary;
+
+    .element {
+        color: @@color;
+    }
+}
+
+// 属性名做变量调用
+.block {
+    color: red;
+
+    .inner {
+        background-color: $color;
+    }
+
+    color: blue;
+}
