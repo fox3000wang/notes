@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style>
+  .red{width: 200px;height: 200px;background-color: red;border-radius: 50%;
+    animation-name: RedBox;
+    animation-duration: 1s;
+    /* linear  ease */
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+
+  @keyframes RedBox {
+    0%{transform: translate(0,0) rotate(0deg);}
+    50%{transform: translate(400px,0);}
+    100%{transform: translate(800px,0) rotate(360deg);background-color: royalblue;}
+  }
+  </style>
+</head>
+<body>
+<div class="red"></div>
+</body>
+</html>
