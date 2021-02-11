@@ -310,6 +310,20 @@ const even = element => element % 2 === 0;
 console.log(array.some(even)); // true
 ```
 
+## map
+
+map() 方法创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值。
+
+```js
+const array1 = [1, 4, 9, 16];
+
+// pass a function to map
+const map1 = array1.map(x => x * 2);
+
+console.log(map1);
+// expected output: Array [2, 8, 18, 32]
+```
+
 ---
 
 ## 小结
