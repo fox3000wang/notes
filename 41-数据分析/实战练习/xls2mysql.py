@@ -14,6 +14,14 @@ db = pymysql.connect(host='localhost',
 # 使用 cursor() 方法创建一个游标对象 cursor
 cursor = db.cursor()
 
+chinese_gold = 0
+chinese_silver = 0
+america_gold = 0
+america_silver = 0
+
+buy_chinese_silver = 0
+sell_chinese_silver = 0
+
 
 i = 1
 while (i <= 38):
@@ -40,8 +48,16 @@ while (i <= 38):
             query = 'insert into record (metal_type, money_type, is_buy, price, number, total_price, year, month) values ("' + \
                 metal_type + '","' + money_type + '",' + is_buy + ',' + \
                 price + ',' + number + ',' + total_price + ',' + year + ',' + month + ' )'
-            print(query)
-            cursor.execute(query)
+            # print(query)
+            # cursor.execute(query)
+
+            if is_buy == '1':
+                if metal_type == "白银" and money_type == "美元":
+                    buy_chinese_silver += float(total_price)
+            else:
+                if metal_type == "白银" and money_type == "美元":
+                    sell_chinese_silver += float(total_price)
+
         else:
             print('----')  # .value.split(' '))
         j += 1
@@ -49,6 +65,9 @@ while (i <= 38):
         # print(query)
 
         # cursor.execute(query)
+
+        print('buy_chinese_silver', buy_chinese_silver)
+        print('sell_chinese_silver', sell_chinese_silver)
     i += 1
 
 # 关闭数据库连接
