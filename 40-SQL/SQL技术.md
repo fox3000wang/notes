@@ -70,3 +70,33 @@
 ```
 
 ### select
+
+```sql
+  SELECT age, user_name FROM table_name;
+```
+
+### where 条件子语句
+
+| 简写形式          | 例子                         | 简介                                   |
+| ----------------- | ---------------------------- | -------------------------------------- |
+| 布尔检验          | WHERE id = '314'             | 用运算符 > < <> LIKE ...               |
+| 多个搜索          | WHERE id = '314' AND f = '0' | AND 和 OR 连接                         |
+| NULL 检验         | WHERE id IS NOT NULL         | IS NULL                                |
+| JOIN 检验         | WHERE t1.id = t2.u_id        |                                        |
+| LIKE 检验         | WHERE phone LIKE '130%'      | 用于模糊查询                           |
+| EXIST 存在性检验  | WHERE EXIST (SELECT ...)     | 与子查询一起用, 子查询只是进行布尔检验 |
+| BETWEEN 范围检验  | WHERE age BETWEEN 3 AND 5    | 和 age > 3 AND age < 5 相似            |
+| IN 范围检验       | WHERE age IN (SELECT ...)    |                                        |
+| SOME\ALL 范围检验 | WHERE age > ANY (SELECT ...) |                                        |
+
+### ORDER BY 子句
+
+默认排序顺序是升序的 ASC, 降序是 DESC
+
+```sql
+SELECT * FROM employees ORDER BY first_name, last_name;;
+```
+
+## 参考
+
+https://www.cainiaojc.com/sql/sql-tutorial.html
