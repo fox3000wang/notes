@@ -94,8 +94,12 @@
 默认排序顺序是升序的 ASC, 降序是 DESC
 
 ```sql
-SELECT * FROM employees ORDER BY first_name, last_name;;
+SELECT * FROM employees ORDER BY first_name, last_name;
 ```
+
+### TOP 语法
+
+## 函数
 
 ## 参考
 
