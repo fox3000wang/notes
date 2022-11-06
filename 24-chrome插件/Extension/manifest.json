@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "demo",
+  "description": "description",
+  "version": "0.1.0",
+  "action": {
+    "default_icon": "icon.png",
+    "default_title": "free your hands",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["scripting", "alarms", "notifications", "storage"],
+  "web_accessible_resources": [
+    {
+      "resources": ["js/"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.baidu.com/*"],
+      "js": ["js/lib/polyfill.min.js", "js/lib/superagent.js", "js/content_script.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "homepage_url": "http://www.wangzm.cn/"
+}
