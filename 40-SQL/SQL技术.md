@@ -101,6 +101,66 @@ SELECT * FROM employees ORDER BY first_name, last_name;
 
 ## 函数
 
+## 其他
+
+### 快速复制表顺便去重复数据
+
+```sql
+-- 选择去重数据
+SELECT DISTINCT * FROM table;
+
+-- 复制一张表数据到另外一张表，表结构要一致
+INSERT INTO tableA SELECT DISTINCT * FROM tableB;
+
+-- 上面的方式无效，需要做删除的操作，但是下面会报告 #1093的错误
+DELETE FROM jobs
+WHERE
+    id IN (SELECT
+        MAX(id)
+    FROM
+        jobs
+    GROUP BY url
+    HAVING COUNT(url) >= 2);
+
+
+-- 这个需要多运行几次,直到全部重复数据被清干净
+DELETE FROM jobs
+WHERE
+    id IN (SELECT sid FROM (SELECT
+        MAX(id) AS sid
+    FROM
+        jobs
+    GROUP BY url
+    HAVING COUNT(url) >= 2) as i);
+```
+
+### 去掉不同长度字符串部分
+
+https://qq.com/index.html?name=wang -> https://qq.com/index.html
+
+```sql
+-- 查询?的位置, 从开始位置找, 从1开始, 找不到就是负数
+SELECT INSTR(url, '?') FROM jobs;
+
+-- 截取字符串
+SELECT SUBSTRING(url, 1, INSTR(url, '?') - 1) u FROM jobs;
+
+-- 更新整张表
+UPDATE jobs SET url = SUBSTRING(url, 1, INSTR(url, '?') - 1);
+```
+
+### 关闭 mysql 安全模式
+
+```sql
+SET SQL_SAFE_UPDATES = 0;
+```
+
+被锁表
+
+```sql
+SHOW VARIABLES LIKE 'innodb_lock_wait_timeout'
+```
+
 ## 参考
 
 https://www.cainiaojc.com/sql/sql-tutorial.html
