@@ -9,8 +9,8 @@ HyperText Transfer Protocol
 
 其他几种**传输协议**
 
-- HTTP
-- HTTPS
+- HTTP 80 端口
+- HTTPS = HTTP + SSL 443 端口
 - FTP
 - UDP
 

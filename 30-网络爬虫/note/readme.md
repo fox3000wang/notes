@@ -20,5 +20,5 @@
 
 - fiddler 抓包
 - postman
-- request
+- request https://docs.python-requests.org/en/latest/
 - xpath
