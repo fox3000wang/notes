@@ -6,6 +6,8 @@ https://github.com/Mikubill/sd-webui-controlnet
 
 ## 模型
 
+https://openai.wiki/controlnet-install.html
+
 https://huggingface.co/lllyasviel/ControlNet-v1-1/tree/main
 
 ---
