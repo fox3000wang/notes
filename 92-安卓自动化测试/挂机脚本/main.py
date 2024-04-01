@@ -3,6 +3,7 @@ import time
 import random
 
 ips = ['192.168.0.107', '192.168.0.108']
+# ips = ['192.168.0.107']
 
 ds = []
 for ip in ips:
@@ -55,16 +56,86 @@ def s_left(delay=10):
     return delay
 
 
-def app_start(package_name):
+def app_start(package_name, delay=5):
     for d in ds:
         d.app_start(package_name)
-    time.sleep(5)
+    time.sleep(delay)
 
 
 def app_stop(package_name):
     for d in ds:
         d.app_stop(package_name)
     time.sleep(5)
+
+###############################################################################
+
+
+def pinduoduo_make_money():  # 拼多多刷短视频, 30分钟
+    print('启动拼多多刷短视频')
+    package_name = 'com.xunmeng.pinduoduo'
+    app_start(package_name)
+    app_stop(package_name)
+    app_start(package_name)
+
+    c(234, 1500, 5, '点击多多视频')
+    c(360, 1000, 5, '点击领取今日奖励')
+    c(360, 1000, 5, '点击确认领取今日奖励')
+
+    total_time = 1800
+    while total_time > 0:
+        total_time -= s_up(6)
+        print('剩余时间：' + str(total_time))
+    app_stop(package_name)
+
+
+def kuaishou_make_money():  # 快手挂机刷短视频, 30分钟
+    print('快手挂机刷短视频')
+    package_name = 'com.kuaishou.nebula'
+    app_start(package_name, 8)
+    app_stop(package_name)
+    app_start(package_name, 8)
+    app_stop(package_name)
+    app_start(package_name)
+
+    total_time = 100
+    while total_time > 0:
+        total_time -= s_up(6)
+        print('剩余时间：' + str(total_time))
+    app_stop(package_name)
+
+    app_start(package_name)
+    total_time = 1800
+    while total_time > 0:
+        total_time -= s_up(6)
+        print('剩余时间：' + str(total_time))
+    app_stop(package_name)
+
+
+def dou_yin_ji_su_make_money():  # 抖音极速版本挂机, 30分钟
+    print('启动抖音极速版本挂机')
+    package_name = 'com.ss.android.ugc.aweme.lite'
+    app_start(package_name, 10)
+
+    total_time = 1800
+    while total_time > 0:
+        total_time -= s_up(6)
+        print('剩余时间：' + str(total_time))
+    app_stop(package_name)
+
+
+def dou_yin_huo_shan_make_money():  # 抖音火山版本挂机, 30分钟
+    print('抖音火山版本挂机')
+    package_name = 'com.ss.android.ugc.live'
+    app_start(package_name, 10)
+
+    total_time = 1800
+    while total_time > 0:
+        total_time -= s_up(6)
+        print('剩余时间：' + str(total_time))
+    app_stop(package_name)
+
+
+###############################################################################
 
 
 def baidu_ting_make_money():
@@ -107,26 +178,7 @@ def taobao():  # 淘宝签到
     # d.app_stop(package_name)
 
 
-def pinduoduo_make_money():  # 拼多多刷短视频, 30分钟
-    print('启动拼多多刷短视频')
-    package_name = 'com.xunmeng.pinduoduo'
-    app_start(package_name)
-    app_stop(package_name)
-    app_start(package_name)
-
-    c(234, 1500, 5, '点击多多视频')
-    c(360, 1000, 5, '点击领取今日奖励')
-    c(360, 1000, 5, '点击确认领取今日奖励')
-
-    total_time = 1800
-    while total_time > 0:
-        total_time -= s(360, 1200, 360, 500, 6)
-        print('剩余时间：' + str(total_time))
-
-    app_stop(package_name)
-
-
-def kuaishou_make_money():
+def kuaishou_click_box():
     print('启动快手刷广告')
     package_name = 'com.kuaishou.nebula'
     d.app_start(package_name)
@@ -181,16 +233,5 @@ def qiyi_get_money():
     d.app_stop(package_name)
 
 
-# baidu_make_money()
-# pinduoduo_make_money()
-# kuaishou_make_money()
-
-
-# for i in range(00):
-#     s_left()
-
-
-# for i in range(240):
-#     print('第' + str(i) + '次')
-#     s_up(5)
-#     # s_left()
+dou_yin_ji_su_make_money()
+dou_yin_huo_shan_make_money()
