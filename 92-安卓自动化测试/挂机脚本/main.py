@@ -2,28 +2,90 @@ import uiautomator2 as u2
 import time
 import random
 
-d = u2.connect('192.168.0.109')
+ips = ['192.168.0.107', '192.168.0.108']
 
-d.info
+ds = []
+for ip in ips:
+    ds.append(u2.connect(ip))
+
+ds[0].info
 # 得出设备链接信息
-print(d.window_size())
+print(ds[0].window_size())
 # 获取屏幕大小
 
 # 关闭所有app 千万不要用啊，会杀掉后台进程
 # d.app_stop_all()
 
 
-def c(x, y, delay, comment):
-    print('click ' + str(x) + ',' + str(y) + comment + ' wait ' + str(delay))
-    d.click(x, y)
-    time.sleep(delay + random.randint(-3, 3))
+def c(x, y, delay, c):  # 点击
+    delay = delay + random.randint(-3, 3)
+    print('c ' + str(x) + ',' + str(y) + c + ' wait ' + str(delay))
+    for d in ds:
+        d.click(x, y)
+    time.sleep(delay)
+    return delay
 
 
-def s(sx, sy, ex, ey, delay):
+def s(sx, sy, ex, ey, delay):  # 滑动
+    delay = delay + random.randint(-3, 3)
     print('swipe ' + str(sx) + ',' + str(sy) + ' to ' +
           str(ex) + ',' + str(ey) + ' wait ' + str(delay))
-    d.swipe(sx, sy, ex, ey, 0.1)
-    time.sleep(delay + random.randint(-3, 3))
+    for d in ds:
+        d.swipe(sx, sy, ex, ey, 0.1)
+    time.sleep(delay)
+    return delay
+
+
+def p(name):
+    print('press')
+    for d in ds:
+        d.press(name)
+    time.sleep(random.randint(1, 3))
+
+
+def s_up(delay=10):
+    print('上滑')
+    delay = s(360, 1200, 360, 500, delay)
+    return delay
+
+
+def s_left(delay=10):
+    print('左滑')
+    delay = s(500, 800, 100, 800, delay)
+    return delay
+
+
+def app_start(package_name):
+    for d in ds:
+        d.app_start(package_name)
+    time.sleep(5)
+
+
+def app_stop(package_name):
+    for d in ds:
+        d.app_stop(package_name)
+    time.sleep(5)
+
+
+def baidu_ting_make_money():
+    printprint('启动百度畅听赚钱')
+    package_name = 'com.baidu.searchbox.lite'
+    d.app_start(package_name)
+    time.sleep(10)
+    c(500, 1500, 10, '点击右下方“福利”')
+
+
+def baidu_make_money():
+    print('启动百度极速赚钱')
+    package_name = 'com.baidu.searchbox.lite'
+    d.app_start(package_name)
+    time.sleep(10)
+    c(360, 1530, 10, '点击中下方红包')
+
+    for i in range(5):  # 随心搜索5次
+        c(600, 920, 15, '点随心搜')
+        p("back")
+        c(590, 495, 1, '关闭弹窗')
 
 
 def taobao():  # 淘宝签到
@@ -45,15 +107,23 @@ def taobao():  # 淘宝签到
     # d.app_stop(package_name)
 
 
-def pinduoduo_make_money():
+def pinduoduo_make_money():  # 拼多多刷短视频, 30分钟
     print('启动拼多多刷短视频')
     package_name = 'com.xunmeng.pinduoduo'
-    d.app_start(package_name)
-    time.sleep(5)
+    app_start(package_name)
+    app_stop(package_name)
+    app_start(package_name)
+
     c(234, 1500, 5, '点击多多视频')
-    for i in range(100):
-        s(360, 1200, 360, 500, 6)
-    d.app_stop(package_name)
+    c(360, 1000, 5, '点击领取今日奖励')
+    c(360, 1000, 5, '点击确认领取今日奖励')
+
+    total_time = 1800
+    while total_time > 0:
+        total_time -= s(360, 1200, 360, 500, 6)
+        print('剩余时间：' + str(total_time))
+
+    app_stop(package_name)
 
 
 def kuaishou_make_money():
@@ -111,5 +181,16 @@ def qiyi_get_money():
     d.app_stop(package_name)
 
 
-pinduoduo_make_money()
+# baidu_make_money()
+# pinduoduo_make_money()
 # kuaishou_make_money()
+
+
+# for i in range(00):
+#     s_left()
+
+
+# for i in range(240):
+#     print('第' + str(i) + '次')
+#     s_up(5)
+#     # s_left()
