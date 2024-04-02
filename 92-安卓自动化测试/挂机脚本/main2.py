@@ -234,7 +234,7 @@ def qiyi_get_money():
     d.app_stop(package_name)
 
 
-bd.get_box(ds[0])
+bd.get_box(ds[1])
 
 # pinduoduo_make_money()
 # kuaishou_make_money()
