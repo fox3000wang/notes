@@ -2,7 +2,6 @@ import uiautomator2 as u2
 import time
 import util as u
 
-
 __package_name = 'com.baidu.searchbox.tomas'
 
 
@@ -41,30 +40,15 @@ def get_box(ds):  # 百度常听开宝箱并且刷5个广告
     u.click(ds, 630, 1260, 5, "点击宝箱")
     u.click(ds, 360, 870, 60, "点击观看视频")
 
-    # 循环5次
-    for i in range(5):
-
-        # 收掉弹窗, 这个可能有可能没有需要判断
-        e = d(className="android.widget.ImageView",
-              resourceId="com.baidu.searchbox.tomas:id/jfq")
-        if e.exists:
-            print("点击收起按键")
-            e.click()
-            time.sleep(3)
-        else:
-            print("没有收起按键")
-
-        # 点击右上角叉叉
-        e = d(className="android.widget.ImageView",
-              resourceId="com.baidu.searchbox.tomas:id/h31")
-        if e.exists:
-            print("点击右上角叉叉")
-            e.click()
-            time.sleep(3)
-
-        u.click([d], 360, 940, 0, "点击再看一个")
-        u.click([d], 360, 1080, 0, "点击再看一个")
-
+    # 循环10次
+    for i in range(10):
+        id = "com.baidu.searchbox.tomas:id/jfq"
+        u.click_btn(ds, id, 3, "点击收起按键")
+        id = "com.baidu.searchbox.tomas:id/h31"
+        u.click_btn(ds, id, 3, "点击右上角叉叉")
+        u.click(ds, 360, 1080, 1, "点击再看一个")
+        u.click(ds, 360, 940, 1, "点击再看一个")
+        # u.get_value(ds, id, "获取左上角的时间") # TBD
         time.sleep(60)
 
     d.app_stop(package_name)
@@ -77,3 +61,14 @@ ds.append(u2.connect('192.168.0.201'))
 # sgin(ds)
 # get_money(ds)
 # get_box(ds)
+
+for i in range(5):
+    id = "com.baidu.searchbox.tomas:id/jfq"
+    u.click_btn(ds, id, 1, "点击收起按键")
+    id = "com.baidu.searchbox.tomas:id/h31"
+    u.click_btn(ds, id, 1, "点击右上角叉叉")
+    u.click(ds, 360, 1080, 1, "点击再看一个")
+    u.click(ds, 360, 940, 5, "点击再看一个")
+    # u.get_value(ds, id, "获取左上角的时间") # TBD
+
+    time.sleep(60)
