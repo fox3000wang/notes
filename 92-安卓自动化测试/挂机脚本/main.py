@@ -2,7 +2,7 @@ import uiautomator2 as u2
 import time
 import random
 
-import baidu as bd
+# import baidu as bd
 
 ips = []
 ips.append('192.168.0.200')
@@ -82,7 +82,7 @@ def pinduoduo_make_money():  # 拼多多刷短视频, 30分钟
     c(360, 1000, 5, '点击领取今日奖励')
     c(360, 1000, 5, '点击确认领取今日奖励')
 
-    total_time = 1800
+    total_time = 1900
     while total_time > 0:
         total_time -= s_up(6)
         print('剩余时间：' + str(total_time))
@@ -105,7 +105,7 @@ def kuaishou_make_money():  # 快手挂机刷短视频, 30分钟
     app_stop(package_name)
 
     app_start(package_name)
-    total_time = 1800
+    total_time = 1900
     while total_time > 0:
         total_time -= s_up(6)
         print('剩余时间：' + str(total_time))
@@ -117,7 +117,7 @@ def dou_yin_ji_su_make_money():  # 抖音极速版本挂机, 30分钟
     package_name = 'com.ss.android.ugc.aweme.lite'
     app_start(package_name, 10)
 
-    total_time = 1800
+    total_time = 1900
     while total_time > 0:
         total_time -= s_up(6)
         print('剩余时间：' + str(total_time))
@@ -129,7 +129,19 @@ def dou_yin_huo_shan_make_money():  # 抖音火山版本挂机, 30分钟
     package_name = 'com.ss.android.ugc.live'
     app_start(package_name, 10)
 
-    total_time = 1800
+    total_time = 1900
+    while total_time > 0:
+        total_time -= s_up(6)
+        print('剩余时间：' + str(total_time))
+    app_stop(package_name)
+
+
+def jin_ri_toutiao_make_money():  # 今日头条极速版本挂机, 30分钟
+    print('今日头条极速版本挂机')
+    package_name = 'com.ss.android.article.lite'
+    app_start(package_name, 10)
+
+    total_time = 1900
     while total_time > 0:
         total_time -= s_up(6)
         print('剩余时间：' + str(total_time))
@@ -234,18 +246,16 @@ def qiyi_get_money():
     d.app_stop(package_name)
 
 
-bd.get_box(ds[0])
+jin_ri_toutiao_make_money()   # 今日头条
 
-# pinduoduo_make_money()
-# kuaishou_make_money()
-# dou_yin_huo_shan_make_money()
-# dou_yin_ji_su_make_money()
+# pinduoduo_make_money()        # 拼多多
 
-# kuaishou_make_money()
-# dou_yin_huo_shan_make_money()
-# dou_yin_ji_su_make_money()
+# dou_yin_huo_shan_make_money() # 抖音火山版
+# pinduoduo_make_money()        # 拼多多
+# kuaishou_make_money()         # 快手
+# dou_yin_ji_su_make_money()    # 抖音极速版
 
 # total_time = 3600
 # while total_time > 0:
-#     total_time -= s_left(6)
+#     total_time -= s_up(6)
 #     print('剩余时间：' + str(total_time))

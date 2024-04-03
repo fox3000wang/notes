@@ -3,28 +3,43 @@ import time
 import util as u
 
 
-def sgin(d):  # 百度畅听签到
+__package_name = 'com.baidu.searchbox.tomas'
+
+
+def sgin(ds):
     print("百度常听签到")
-    package_name = 'com.baidu.searchbox.tomas'
-    d.app_start(package_name)
-    time.sleep(10)
-
-    u.click([d], 640, 1500, 5, "点击我的图标")
-    u.click([d], 140, 820, 5, "点击签到按钮")
-
-    # d.click(450, 1000)  # 点击而外领取 等待1分钟广告
-    d.app_stop(package_name)
+    u.app_start(ds, __package_name, 12)
+    u.click(ds, 640, 1500, 5, "点击我的图标")
+    u.click(ds, 140, 820, 5, "点击签到按钮")
+    u.click(ds, 190, 1100, 5, "点击直接领取按钮")
+    u.app_stop(ds, __package_name, 1)
 
 
-def get_box(d):  # 百度常听开宝箱并且刷5个广告
+def get_money(ds):
+    print("百度常听提现")
+    u.app_start(ds, __package_name, 12)
+    u.click(ds, 640, 1500, 5, "点击我的图标")
+    # u.click(ds, 620, 620, 5, "点击立即提现") 这里位置会变
+    id = 'com.baidu.searchbox.tomas:id/bag'
+    u.click_btn(ds, id, 3, "点击立即提现")
+    u.click(ds, 130, 630, 5, "点击'0.3元'")
+    u.click(ds, 360, 870, 200, "点击去听书")
+    u.app_stop(ds, __package_name, 3)
+    u.app_start(ds, __package_name, 12)
+    u.click(ds, 640, 1500, 5, "点击我的图标")
+    u.click(ds, 620, 620, 5, "点击立即提现")
+    u.click(ds, 130, 630, 3, "点击'0.3元'")
+    u.click(ds, 360, 1080, 3, "点击提现到微信")
+    u.app_stop(ds, __package_name, 1)
+
+
+def get_box(ds):  # 百度常听开宝箱并且刷5个广告
     print("百度常听开宝箱得金币")
-    package_name = 'com.baidu.searchbox.tomas'
-    d.app_start(package_name)
-    time.sleep(8)
+    u.app_start(ds, __package_name, 12)
 
-    u.click([d], 500, 1500, 5, "点击福利")
-    u.click([d], 630, 1260, 5, "点击宝箱")
-    u.click([d], 360, 870, 60, "点击观看视频")
+    u.click(ds, 500, 1500, 5, "点击福利")
+    u.click(ds, 630, 1260, 5, "点击宝箱")
+    u.click(ds, 360, 870, 60, "点击观看视频")
 
     # 循环5次
     for i in range(5):
@@ -55,6 +70,10 @@ def get_box(d):  # 百度常听开宝箱并且刷5个广告
     d.app_stop(package_name)
 
 
-d = u2.connect('192.168.0.201')
-get_box(d)
-# sgin(d)
+ds = []
+ds.append(u2.connect('192.168.0.200'))
+ds.append(u2.connect('192.168.0.201'))
+
+# sgin(ds)
+# get_money(ds)
+# get_box(ds)

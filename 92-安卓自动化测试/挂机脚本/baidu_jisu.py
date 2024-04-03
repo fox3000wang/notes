@@ -1,5 +1,10 @@
 import uiautomator2 as u2
 import time
+import util as u
+
+
+def sgin(d):  # 百度极速版签到
+    print("百度极速版签到")
 
 
 def get_box(d):  # 百度极速版开宝箱并且刷5个广告
