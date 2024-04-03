@@ -43,7 +43,7 @@ def click_btn(ds, id, delay, c):  # 点击元素
 
 
 def get_value(ds, id, c):  # 获取元素值
-    print('c ' + ' ' + id + c)
+    print('get_value ' + id + ' ' + c)
     for d in ds:
         element = d(className=__name_image_view, resourceId=id)
         if element.exists():
