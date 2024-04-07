@@ -46,7 +46,7 @@ def get_box(ds):  # 百度常听开宝箱并且刷5个广告
         # u.get_value(ds, id, "获取左上角的时间") # TBD
         time.sleep(60)
 
-    d.app_stop(package_name)
+    u.app_stop(ds, __package_name, 1)
 
 
 ds = []
