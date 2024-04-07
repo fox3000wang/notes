@@ -6,8 +6,6 @@ import requests
 # 目标HTTPS URL
 __url = 'https://api.day.app/etMsxSrdvToPv68aD4RQR3/'
 
-# __name_image_view = 'android.widget.ImageView'
-
 
 def app_start(ds, package_name, delay=5):
     for d in ds:
@@ -36,7 +34,7 @@ def click_btn(ds, id, delay, c):  # 点击元素
     delay = delay + random.randint(0, 3)
     print('click_btn ' + ' ' + id + c + ' wait ' + str(delay))
     for d in ds:
-        btn = d(className=__name_image_view, resourceId=id)
+        btn = d(className='android.widget.ImageView', resourceId=id)
         if btn.exists():
             bs = btn.bounds()
             d.click((bs[0] + bs[2]) / 2, (bs[1] + bs[3]) / 2)
@@ -47,11 +45,11 @@ def click_btn(ds, id, delay, c):  # 点击元素
     return delay
 
 
-def click_btn_text(ds, t, delay, c, oX=0, oY=0):  # 点击文本+偏移
+def click_btn_text(ds, t, delay, c, oX=0, oY=0, className='android.widget.TextView'):  # 点击文本+偏移
     delay = delay + random.randint(0, 3)
     print('click_btn_text ' + ' ' + t + c + ' wait ' + str(delay))
     for d in ds:
-        btn = d(className='android.widget.TextView', text=t)
+        btn = d(className=className, text=t)
         if btn.exists():
             bs = btn.bounds()
             d.click((bs[0] + bs[2]) / 2 + oX, (bs[1] + bs[3]) / 2 + oY)
