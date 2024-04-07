@@ -7,8 +7,8 @@ __package_name = 'com.ss.android.ugc.aweme.lite'
 
 def sgin(ds):
     print("抖音极速签到")
-    # u.app_start(ds, __package_name, 15)
-    u.app_start(ds, __package_name, 10)  # for debug
+    u.app_start(ds, __package_name, 5)
+    u.app_start(ds, __package_name, 10)
     # 这里会弹出关闭少儿模式, 等几秒会自动关掉
     u.click(ds, 360, 1500, 3, '点击中下方赚钱')
 
@@ -30,7 +30,7 @@ def get_money(ds):  # test pass
     u.click(ds, 545, 250, 5, '点击"去提现"')
     u.click(ds, 150, 880, 3, '点击"0.3元"')
     u.click(ds, 360, 1500, 2, '点击"0.3元"')
-    u.click_btn_text(ds, '确认提现', 1, '点击"确认提现"')
+    u.click(ds, 360, 1500, 3, '点击"确认提现"')
     u.app_stop(ds, __package_name, 1)
 
 
