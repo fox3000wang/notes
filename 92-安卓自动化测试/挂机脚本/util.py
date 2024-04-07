@@ -52,7 +52,7 @@ def click_btn_text(ds, t, delay, c, oX=0, oY=0):  # 点击文本+偏移
     delay = delay + random.randint(0, 3)
     print('click_btn_text ' + ' ' + t + c + ' wait ' + str(delay))
     for d in ds:
-        btn = d(text=t)
+        btn = d(className='android.widget.TextView', text=t)
         if btn.exists():
             bs = btn.bounds()
             d.click((bs[0] + bs[2]) / 2 + oX, (bs[1] + bs[3]) / 2 + oY)
