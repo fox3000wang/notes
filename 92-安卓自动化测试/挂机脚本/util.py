@@ -36,8 +36,7 @@ def click_btn(ds, id, delay, c):  # 点击元素
     delay = delay + random.randint(0, 3)
     print('click_btn ' + ' ' + id + c + ' wait ' + str(delay))
     for d in ds:
-        # btn = d(className=__name_image_view, resourceId=id)
-        btn = d(resourceId=id)
+        btn = d(className=__name_image_view, resourceId=id)
         if btn.exists():
             bs = btn.bounds()
             d.click((bs[0] + bs[2]) / 2, (bs[1] + bs[3]) / 2)
