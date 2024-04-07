@@ -57,11 +57,9 @@ def get_box(ds):  # 百度极速版开宝箱并且刷5个广告
 ds = []
 ds.append(u2.connect('192.168.0.200'))
 ds.append(u2.connect('192.168.0.201'))
+
+# sgin(ds)
+# get_money(ds)
 get_box(ds)
 
-
-# d = ds[0]
-# e = d(className="android.widget.ImageView",
-#       resourceId="com.baidu.searchbox.lite:id/anc")
-# # resourceId="com.baidu.searchbox.lite:id/ms")
-# print(e.get_text())
+u.send_notice('ok')
