@@ -6,7 +6,7 @@ import requests
 # 目标HTTPS URL
 __url = 'https://api.day.app/etMsxSrdvToPv68aD4RQR3/'
 
-__name_image_view = "android.widget.ImageView"
+# __name_image_view = 'android.widget.ImageView'
 
 
 def app_start(ds, package_name, delay=5):
@@ -33,12 +33,14 @@ def click(ds, x, y, delay=1, c=''):  # 点击坐标
 
 
 def click_btn(ds, id, delay, c):  # 点击元素
-    delay = delay + random.randint(-1, 3)
+    delay = delay + random.randint(0, 3)
     print('click_btn ' + ' ' + id + c + ' wait ' + str(delay))
     for d in ds:
-        btn = d(className=__name_image_view, resourceId=id)
+        # btn = d(className=__name_image_view, resourceId=id)
+        btn = d(resourceId=id)
         if btn.exists():
-            btn.click()
+            bs = btn.bounds()
+            d.click((bs[0] + bs[2]) / 2, (bs[1] + bs[3]) / 2)
             print(c)
         else:
             print(id + ' not found')
@@ -46,8 +48,23 @@ def click_btn(ds, id, delay, c):  # 点击元素
     return delay
 
 
+def click_btn_text(ds, t, delay, c, oX=0, oY=0):  # 点击文本+偏移
+    delay = delay + random.randint(0, 3)
+    print('click_btn_text ' + ' ' + t + c + ' wait ' + str(delay))
+    for d in ds:
+        btn = d(text=t)
+        if btn.exists():
+            bs = btn.bounds()
+            d.click((bs[0] + bs[2]) / 2 + oX, (bs[1] + bs[3]) / 2 + oY)
+            print(c)
+        else:
+            print(t + ' not found')
+    time.sleep(delay)
+    return delay
+
+
 def get_value(ds, id, c):  # 获取元素值
-    print('get_value ' + id + ' ' + c)
+    print('get_value ' + id + ' exist' + c)
     for d in ds:
         element = d(className=__name_image_view, resourceId=id)
         if element.exists():
