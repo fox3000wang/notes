@@ -1,5 +1,4 @@
 import uiautomator2 as u2
-import time
 import util as u
 
 __package_name = 'com.qiyi.video.lite'
@@ -29,14 +28,11 @@ def get_box(ds):
 
 
 def watch_video(ds):
-    print("爱奇艺观看视频")
+    print("爱奇艺看短视频")
+    u.app_stop(ds, __package_name, 1)
     u.app_start(ds, __package_name, 10)
     u.click(ds, 200, 1500, 3, '点击短视频')
-
-    total_time = 1900
-    while total_time > 0:
-        total_time -= u.swipe_up(ds, 5, 10)
-        print('爱奇艺观看视频 剩余时间：' + str(total_time))
+    u.hang_up(ds, 1880, '爱奇艺看短视频', 5, 10)
     u.app_stop(ds, __package_name, 1)
 
 

@@ -8,12 +8,14 @@ __url = 'https://api.day.app/etMsxSrdvToPv68aD4RQR3/'
 
 
 def app_start(ds, package_name, delay=5):
+    print('app_start ' + package_name)
     for d in ds:
         d.app_start(package_name)
     time.sleep(delay)
 
 
 def app_stop(ds, package_name, delay=5):
+    print('app_stop ' + package_name)
     for d in ds:
         d.app_stop(package_name)
     time.sleep(0)
@@ -75,6 +77,17 @@ def s(ds, sx, sy, ex, ey, delay=5, r=0):  # 滑动
 def swipe_up(ds, delay=5, r=0):
     delay = s(ds, 360, 1200, 360, 500, delay, r)
     return delay
+
+
+def swipe_left(ds, delay=5, r=0):
+    delay = s(ds, 500, 800, 100, 800, delay, r)
+    return delay
+
+
+def hang_up(ds, total_time=1880, c='', delay=5, r=0):
+    while total_time > 0:
+        total_time -= swipe_up(ds, delay, r)
+        print(c + ' 剩余时间：' + str(total_time))
 
 
 def get_value(ds, id, c):  # 获取元素值

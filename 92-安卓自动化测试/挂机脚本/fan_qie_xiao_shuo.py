@@ -37,8 +37,6 @@ def get_money(ds):
     # u.app_stop(ds, __package_name, 1)
 
 
-ds = []
-ds.append(u2.connect('192.168.0.200'))
-ds.append(u2.connect('192.168.0.201'))
-
-u.app_start(ds, __package_name, 10)
+# ds = []
+# ds.append(u2.connect('192.168.0.200'))
+# ds.append(u2.connect('192.168.0.201'))

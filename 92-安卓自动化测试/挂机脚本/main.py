@@ -10,6 +10,7 @@ import you_shi as ys
 import wu_kong as wk
 import fan_qie_xiao_shuo as fqxs
 import ai_qi_yi as aqy
+import ping_duo_duo as pdd
 
 
 ds = []
@@ -73,24 +74,6 @@ def app_stop(package_name):
     time.sleep(5)
 
 ###############################################################################
-
-
-def pinduoduo_make_money():  # 拼多多刷短视频, 30分钟
-    print('启动拼多多刷短视频')
-    package_name = 'com.xunmeng.pinduoduo'
-    app_start(package_name)
-    app_stop(package_name)
-    app_start(package_name)
-
-    c(234, 1500, 5, '点击多多视频')
-    c(360, 1000, 5, '点击领取今日奖励')
-    c(360, 1000, 5, '点击确认领取今日奖励')
-
-    total_time = 1900
-    while total_time > 0:
-        total_time -= s_up(6)
-        print('剩余时间：' + str(total_time))
-    app_stop(package_name)
 
 
 def kuaishou_make_money():  # 快手挂机刷短视频, 30分钟
@@ -209,7 +192,9 @@ def daily():
 
 try:
     # daily()
+
     aqy.watch_video(ds)
+    # pdd.watch_video(ds)
 
     # bdct.get_box(ds)
     # bdjs.get_box(ds)
