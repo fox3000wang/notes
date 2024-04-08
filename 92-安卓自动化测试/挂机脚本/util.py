@@ -14,10 +14,17 @@ def app_start(ds, package_name, delay=5):
     time.sleep(delay)
 
 
-def app_stop(ds, package_name, delay=5):
+def app_stop(ds, package_name, delay=1):
     print('app_stop ' + package_name)
     for d in ds:
         d.app_stop(package_name)
+    time.sleep(0)
+
+
+def app_stop_all(ds, delay=1):
+    print('app_stop_all')
+    for d in ds:
+        d.app_stop_all(excludes=['com.github.uiautomator'])
     time.sleep(0)
 
 
@@ -47,17 +54,17 @@ def click_btn(ds, id, delay, c, className='android.widget.ImageView'):  # 点击
     return delay
 
 
-def click_btn_text(ds, t, delay, c, oX=0, oY=0, className='android.widget.TextView'):  # 点击文本+偏移
+def click_btn_text(ds, txt, delay, c, oX=0, oY=0, className='android.widget.TextView'):  # 点击文本+偏移
     delay = delay + random.randint(0, 3)
     print('click_btn_text ' + ' ' + t + c + ' wait ' + str(delay))
     for d in ds:
-        btn = d(className=className, text=t)
+        btn = d(className=className, text=txt)
         if btn.exists():
             bs = btn.bounds()
             d.click((bs[0] + bs[2]) / 2 + oX, (bs[1] + bs[3]) / 2 + oY)
             print(c)
         else:
-            print(t + ' not found')
+            print(txt + ' not found')
     time.sleep(delay)
     return delay
 

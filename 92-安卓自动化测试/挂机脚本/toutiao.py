@@ -21,14 +21,20 @@ def get_money(ds):
     u.click(ds, 600, 250, 5, '去提现')
     u.click(ds, 140, 650, 3, '点击"0.5元"')
     u.click(ds, 360, 1500, 1, '点击"立即提现"')
-    # u.app_stop(ds, __package_name, 1)
+    u.app_stop(ds, __package_name, 1)
 
 
-ds = []
-ds.append(u2.connect('192.168.0.200'))
+def watch_video(ds):
+    print('今日头条极速版本挂机')
+    u.app_start(ds, __package_name, 10)
+    u.hang_up(ds, 1880, '今日头条', 5, 10)
+    u.app_stop(ds, __package_name, 1)
+
+# ds = []
+# ds.append(u2.connect('192.168.0.200'))
 # ds.append(u2.connect('192.168.0.201'))
 
 
 # sgin(ds)
-get_money(ds)
+# get_money(ds)
 # get_box(ds)

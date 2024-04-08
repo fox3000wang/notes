@@ -38,6 +38,12 @@ def get_money(ds):  # test pass
     u.app_stop(ds, __package_name, 1)
 
 
+def watch_video(ds):
+    print("抖音极速观看视频")
+    u.app_start(ds, __package_name, 10)
+    u.hang_up(ds, 1880, '今日头条', 5, 10)
+    u.app_stop(ds, __package_name, 1)
+
 # ds = []
 # ds.append(u2.connect('192.168.0.200'))
 # ds.append(u2.connect('192.168.0.201'))
