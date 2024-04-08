@@ -5,8 +5,8 @@ import util as u
 
 import baidu_ct as bdct
 import baidu_js as bdjs
-
 import douyin_js as dyjs
+import you_shi as ys
 
 
 ds = []
@@ -185,9 +185,13 @@ def daily():
 
     dyjs.sgin(ds)
     dyjs.sgin(ds)
+    dyjs.get_money(ds)
+    dyjs.get_money(ds)
+
+
+    ys.sgin(ds)
     """
-    dyjs.get_money(ds)
-    dyjs.get_money(ds)
+    ys.get_money(ds)
 
     # bdct.get_box(ds)
     # bdjs.get_box(ds)
