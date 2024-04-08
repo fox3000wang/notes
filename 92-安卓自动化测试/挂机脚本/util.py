@@ -60,6 +60,23 @@ def click_btn_text(ds, t, delay, c, oX=0, oY=0, className='android.widget.TextVi
     return delay
 
 
+def s(ds, sx, sy, ex, ey, delay=5, r=0):  # 滑动
+    delay = delay + random.randint(0, r)
+    if sx == ex:
+        print('上滑' + ' wait ' + str(delay))
+    if sy == ey:
+        print('左滑' + ' wait ' + str(delay))
+    for d in ds:
+        d.swipe(sx, sy, ex, ey, 0.1)
+    time.sleep(delay)
+    return delay
+
+
+def swipe_up(ds, delay=5, r=0):
+    delay = s(ds, 360, 1200, 360, 500, delay, r)
+    return delay
+
+
 def get_value(ds, id, c):  # 获取元素值
     print('get_value ' + id + ' exist' + c)
     for d in ds:

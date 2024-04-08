@@ -6,7 +6,7 @@ __package_name = 'com.dragon.read'
 __class_name = 'com.lynx.tasm.behavior.ui.text.FlattenUIText'
 
 
-def sgin(ds):
+def sgin(ds):  # test pass
     print("番茄小说签到")
     u.app_start(ds, __package_name, 10)
     u.click_btn_text(ds, '福利', 5, '点击“福利”', 0, 0)
@@ -37,20 +37,8 @@ def get_money(ds):
     # u.app_stop(ds, __package_name, 1)
 
 
-def get_box(ds):
-    print("悟空宝箱")
-    u.app_start(ds, __package_name, 10)
-
-    # 循环10次
-    for i in range(10):
-        u.click_btn_text(ds, '关闭', 3, '点击“关闭”', 0, 0, __class_name)
-        u.click_btn_text(ds, '坚持退出', 3, '点击“看视频再得金币”', 0, -100, __class_name)
-        time.sleep(60)
-
-
 ds = []
 ds.append(u2.connect('192.168.0.200'))
 ds.append(u2.connect('192.168.0.201'))
 
-
-# get_money(ds)
+u.app_start(ds, __package_name, 10)

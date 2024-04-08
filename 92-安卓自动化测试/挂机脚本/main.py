@@ -8,6 +8,8 @@ import baidu_js as bdjs
 import douyin_js as dyjs
 import you_shi as ys
 import wu_kong as wk
+import fan_qie_xiao_shuo as fqxs
+import ai_qi_yi as aqy
 
 
 ds = []
@@ -195,15 +197,19 @@ def daily():
 
     wk.sgin(ds)
     wk.get_money(ds)
-    wk.get_box(ds)
+    #wk.get_box(ds)
+
+    fqxs.sgin(ds)
+    fqxs.get_money(ds)
     """
 
-    # bdct.get_box(ds)
-    # bdjs.get_box(ds)
+    bdct.get_box(ds)
+    bdjs.get_box(ds)
 
 
 try:
-    daily()
+    # daily()
+    aqy.watch_video(ds)
 
     # bdct.get_box(ds)
     # bdjs.get_box(ds)
