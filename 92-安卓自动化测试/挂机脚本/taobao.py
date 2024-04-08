@@ -89,4 +89,4 @@ def sign3(ds):
 ds = []
 ds.append(u2.connect('192.168.0.200'))
 ds.append(u2.connect('192.168.0.201'))
-u.app_stop(ds, __package_name)
+# u.app_stop(ds, __package_name)

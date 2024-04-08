@@ -17,7 +17,7 @@ def watch_video(ds):
 
     total_time = 1880
     while total_time > 0:
-        total_time -= swipe_up(ds, delay, r)
-        print(拼多多刷短视频 + ' 剩余时间：' + str(total_time))
+        total_time -= u.swipe_up(ds, 5, 5)
+        print('拼多多刷短视频' + ' 剩余时间：' + str(total_time))
         u.click(ds, 600, 320, 1, '点击关闭红包')
     u.app_stop(ds, __package_name, 1)

@@ -56,7 +56,7 @@ def click_btn(ds, id, delay, c, className='android.widget.ImageView'):  # 点击
 
 def click_btn_text(ds, txt, delay, c, oX=0, oY=0, className='android.widget.TextView'):  # 点击文本+偏移
     delay = delay + random.randint(0, 3)
-    print('click_btn_text ' + ' ' + t + c + ' wait ' + str(delay))
+    print('click_btn_text ' + ' ' + txt + c + ' wait ' + str(delay))
     for d in ds:
         btn = d(className=className, text=txt)
         if btn.exists():
@@ -93,8 +93,14 @@ def swipe_left(ds, delay=5, r=0):
 
 def hang_up(ds, total_time=1880, c='', delay=5, r=0):
     while total_time > 0:
-        total_time -= swipe_up(ds, delay, r)
         print(c + ' 剩余时间：' + str(total_time))
+        total_time -= swipe_up(ds, delay, r)
+
+
+def hang_left(ds, total_time=1880, c='', delay=5, r=0):
+    while total_time > 0:
+        print(c + ' 剩余时间：' + str(total_time))
+        total_time -= swipe_left(ds, delay, r)
 
 
 def get_value(ds, id, c):  # 获取元素值

@@ -47,31 +47,32 @@ def daily():
     fqxs.get_money(ds)
     """
 
+
+def get_box():
     bdct.get_box(ds)
     bdjs.get_box(ds)
 
 
-try:
-    # daily()
+pdd.watch_video(ds)
 
-    # aqy.watch_video(ds)
-    # pdd.watch_video(ds)
-    # ks.watch_video(ds)
+# daily()
+# get_box()
 
-    # bdct.get_box(ds)
-    # bdjs.get_box(ds)
+# u.hang_left(ds)
+# u.hang_left(ds)
+# u.hang_up(ds)
 
-    # dou_yin_ji_su_make_money()
-    # pinduoduo_make_money()
-    # jin_ri_toutiao_make_money()
-    # kuaishou_make_money()
+# aqy.watch_video(ds)
+pdd.watch_video(ds)
+ks.watch_video(ds)
 
-    # kuaishou_make_money()
-    # dou_yin_ji_su_make_money()
+# bdct.get_box(ds)
+# bdjs.get_box(ds)
 
-except:
-    u.send_notice('出错了!')
-finally:
-    # u.send_notice('完成!')
-    pass
-u.send_notice('完成!')
+# dou_yin_ji_su_make_money()
+# pinduoduo_make_money()
+# jin_ri_toutiao_make_money()
+# kuaishou_make_money()
+
+# kuaishou_make_money()
+# dou_yin_ji_su_make_money()
