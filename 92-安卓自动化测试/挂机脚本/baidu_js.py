@@ -49,13 +49,13 @@ def get_box(ds):
     u.app_stop(ds, __package_name, 2)
 
 
-ds = []
-ds.append(u2.connect('192.168.0.200'))
-ds.append(u2.connect('192.168.0.201'))
+# ds = []
+# ds.append(u2.connect('192.168.0.200'))
+# ds.append(u2.connect('192.168.0.201'))
 
 # sgin(ds)
 # get_money(ds)
-get_box(ds)
+# get_box(ds)
 
 # d = ds[0]
 # btn = d(resourceId="com.baidu.searchbox.lite:id/hr7")

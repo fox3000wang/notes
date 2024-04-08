@@ -30,11 +30,11 @@ def click(ds, x, y, delay=1, c=''):  # 点击坐标
 # def click_btn(ds, type, id, delay, c): # 点击元素
 
 
-def click_btn(ds, id, delay, c):  # 点击元素
+def click_btn(ds, id, delay, c, className='android.widget.ImageView'):  # 点击元素
     delay = delay + random.randint(0, 3)
     print('click_btn ' + ' ' + id + c + ' wait ' + str(delay))
     for d in ds:
-        btn = d(className='android.widget.ImageView', resourceId=id)
+        btn = d(className=className, resourceId=id)
         if btn.exists():
             bs = btn.bounds()
             d.click((bs[0] + bs[2]) / 2, (bs[1] + bs[3]) / 2)

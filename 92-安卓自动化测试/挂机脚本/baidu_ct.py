@@ -21,7 +21,7 @@ def get_money(ds):
     u.click(ds, 640, 1500, 5, "点击我的图标")
     # u.click(ds, 620, 620, 5, "点击立即提现") 这里位置会变
     id = 'com.baidu.searchbox.tomas:id/bag'
-    u.click_btn(ds, id, 3, "点击立即提现")
+    u.click_btn(ds, id, 3, "点击立即提现", "android.widget.Button")
     u.click(ds, 140, 640, 3, "点击'0.3元'")
     u.click(ds, 360, 1080, 3, "点击提现到微信")
     u.app_stop(ds, __package_name, 1)
@@ -49,11 +49,15 @@ def get_box(ds):  # 百度常听开宝箱并且刷5个广告
     u.app_stop(ds, __package_name, 1)
 
 
-ds = []
-ds.append(u2.connect('192.168.0.200'))
-ds.append(u2.connect('192.168.0.201'))
+# ds = []
+# ds.append(u2.connect('192.168.0.200'))
+# ds.append(u2.connect('192.168.0.201'))
 
-get_box(ds)
+
+# u.click_btn(ds, 'com.baidu.searchbox.tomas:id/bag', 3, "点击立即提现")
+
+
+# get_box(ds)
 
 
 # sgin(ds)

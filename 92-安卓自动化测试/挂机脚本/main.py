@@ -3,7 +3,11 @@ import time
 import random
 import util as u
 
-# import baidu as bd
+import baidu_ct as bdct
+import baidu_js as bdjs
+
+import douyin_js as dyjs
+
 
 ds = []
 ds.append(u2.connect('192.168.0.200'))
@@ -147,26 +151,6 @@ def jin_ri_toutiao_make_money():  # 今日头条极速版本挂机, 30分钟
 
 ###############################################################################
 
-
-def taobao():  # 淘宝签到
-    # 获取包名
-    package_name = 'com.taobao.taobao'
-
-    # 打开淘宝app
-    d.app_start(package_name)
-
-    # 等待10秒钟 A10环境下经验值
-    time.sleep(10)
-
-    # 点击坐标100，100
-    d.click(106, 106)
-
-    time.sleep(10)
-
-    # 关闭淘宝
-    # d.app_stop(package_name)
-
-    package_name = 'com.qiyi.video.lite'
     d.app_start(package_name)
     time.sleep(10)
 
@@ -186,29 +170,47 @@ def taobao():  # 淘宝签到
     d.app_stop(package_name)
 
 
-# jin_ri_toutiao_make_money()   # 今日头条
+def daily():
+    """
+    bdct.sgin(ds)
+    bdct.sgin(ds)
+    bdct.get_money(ds)
+    bdct.get_money(ds)
 
-# pinduoduo_make_money()        # 拼多多
-# dou_yin_huo_shan_make_money() # 抖音火山版
-# pinduoduo_make_money()        # 拼多多
-# kuaishou_make_money()         # 快手
-# dou_yin_ji_su_make_money()    # 抖音极速版
+    bdjs.sgin(ds)
+    bdjs.sgin(ds)
+    bdjs.get_money(ds)
+    bdjs.get_money(ds)
+
+
+    dyjs.sgin(ds)
+    dyjs.sgin(ds)
+    """
+    dyjs.get_money(ds)
+    dyjs.get_money(ds)
+
+    # bdct.get_box(ds)
+    # bdjs.get_box(ds)
+
 
 try:
+    daily()
+
+    # bdct.get_box(ds)
+    # bdjs.get_box(ds)
+
     # dou_yin_ji_su_make_money()
     # pinduoduo_make_money()
     # jin_ri_toutiao_make_money()
     # kuaishou_make_money()
 
-    pinduoduo_make_money()
-    jin_ri_toutiao_make_money()
-    kuaishou_make_money()
-    dou_yin_ji_su_make_money()
+    # kuaishou_make_money()
+    # dou_yin_ji_su_make_money()
 
-    # total_time = 1900 * 2
+    # total_time = 1900 * 6
     # while total_time > 0:
-    #     total_time -= s_up(15)
-    #     # total_time -= s_left(10)
+    #     # total_time -= s_up(15)
+    #     total_time -= s_left(10)
 
     #     print('剩余时间：' + str(total_time))
 

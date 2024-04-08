@@ -28,16 +28,20 @@ def get_money(ds):  # test pass
     u.app_start(ds, __package_name, 10)
     u.click(ds, 360, 1500, 5, '点击中下方赚钱')
     u.click(ds, 545, 250, 5, '点击"去提现"')
-    u.click(ds, 150, 880, 3, '点击"0.3元"')
-    u.click(ds, 360, 1500, 2, '点击"0.3元"')
-    u.click(ds, 360, 1500, 3, '点击"确认提现"')
+    for d in ds:
+        if d.wlan_ip == '192.168.0.200':
+            u.click(ds, 150, 880, 3, '点击"0.3元"')
+            u.click(ds, 360, 1450, 3, '点击"确认提现"')
+        if d.wlan_ip == '192.168.0.201':
+            u.click(ds, 360, 1500, 2, '点击"0.3元"')
+            u.click(ds, 360, 1450, 3, '点击"确认提现"')
     u.app_stop(ds, __package_name, 1)
 
 
-ds = []
-ds.append(u2.connect('192.168.0.200'))
-ds.append(u2.connect('192.168.0.201'))
+# ds = []
+# ds.append(u2.connect('192.168.0.200'))
+# ds.append(u2.connect('192.168.0.201'))
 
-sgin(ds)
-get_money(ds)
+# sgin(ds)
+# get_money(ds)
 # get_box(ds)
