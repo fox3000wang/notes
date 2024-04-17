@@ -49,6 +49,14 @@ def get_box(ds):
     u.app_stop(ds, __package_name, 2)
 
 
+def watch_video(ds):
+    print("百度极速版观看视频")
+    u.app_stop(ds, __package_name, 1)
+    u.app_start(ds, __package_name, 6)
+    u.hang_up(ds, 1880, '百度极速', 5, 10)
+    u.app_stop(ds, __package_name, 1)
+
+
 # ds = []
 # ds.append(u2.connect('192.168.0.200'))
 # ds.append(u2.connect('192.168.0.201'))

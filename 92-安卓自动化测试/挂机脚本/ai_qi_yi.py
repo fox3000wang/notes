@@ -7,7 +7,6 @@ __package_name = 'com.qiyi.video.lite'
 def sgin(ds):
     print("爱奇艺签到")
     u.app_start(ds, __package_name, 12)
-
     u.app_stop(ds, __package_name, 1)
 
 
