@@ -10,6 +10,7 @@ import fan_qie_xiao_shuo as fqxs
 import ai_qi_yi as aqy
 import ping_duo_duo as pdd
 import kuaishou as ks
+import toutiao as tt
 
 
 ds = []
@@ -50,42 +51,24 @@ def get_box():
     bdjs.get_box(ds)
 
 
-# aqy.sgin(ds)
-# aqy.sgin(ds)
-# aqy.sgin(ds)
+# u.hang_left(ds, 1880 * 3, '', 5, 5)
+# u.hang_up(ds, 1880*4, '', 10, 20)
 
 
-# daily()
-# get_box()
+# u.hang_up(ds, 3600 * 2, '', 8, 12)  # 西瓜视频挂机
+# u.hang_up(ds, 3600 * 4, '', 15, 30)  # 点淘挂机
 
-# u.hang_left(ds, 4000, '', 5, 10)
-# u.hang_left(ds, 1880 * 6, '', 15, 15)
-u.hang_up(ds, 1880, '', 5, 10)
-# u.hang_up(ds, 1880 * 2, '', 10, 20)
+u.hang_up(ds, 3600 * 3.4, '', 8, 12)  # 西瓜视频挂机
+daily()
+get_box()
 
 
-# dyjs.watch_video(ds)
-
-for i in range(0, 3):
+for i in range(0, 5):
     # aqy.watch_video(ds)
-    pdd.watch_video(ds)
-    ks.watch_video(ds)
+    # tt.watch_video(ds)
     dyjs.watch_video(ds)
     bdjs.watch_video(ds)
-
-# dyjs.watch_video(ds
-#
-# )
-# pdd.watch_video(ds)
-# ks.watch_video(ds)
+    ks.watch_video(ds)
+    pdd.watch_video(ds)
 
 u.send_notice('挂机结束')
-# daily()
-# get_box()
-
-# u.hang_left(ds)
-# u.hang_up(ds)
-
-# aqy.watch_video(ds)
-# pdd.watch_video(ds)
-# ks.watch_video(ds)
